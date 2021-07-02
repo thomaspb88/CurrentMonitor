@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Colour Brushes-->
+    <SolidColorBrush x:Key="Green" Color="Green"/>
+    <SolidColorBrush x:Key="Red" Color="Red"/>
+    <SolidColorBrush x:Key="BREGreen">#c2bc00</SolidColorBrush>
+    <SolidColorBrush x:Key="MainWindowBackground">#F6F7FC</SolidColorBrush>
+    <SolidColorBrush x:Key="MwnuButtonHoverColour">#e4e4e4</SolidColorBrush>
+    <SolidColorBrush x:Key="MenuPanelBackground" Color="White"/>
+    <SolidColorBrush x:Key="PanelBackground" Color="White"/>
+    <SolidColorBrush x:Key="MonitorDisplayBackground" Color="Black"/>
+    <SolidColorBrush x:Key="SliderToggleButtonColour" Color="White"/>
+    <SolidColorBrush x:Key="EventListboxBackground" Color="White"/>
+    <SolidColorBrush x:Key="MainBorderColour" Color="#a9bdd7ff"/>
+
+    <!--Colour-->
+    <Color x:Key="DropShadowColour">#DFE7F1</Color>
+    
+</ResourceDictionary>

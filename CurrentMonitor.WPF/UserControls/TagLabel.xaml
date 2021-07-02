@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="CurrentMonitor.WPF.UserControls.TagLabel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CurrentMonitor.WPF.UserControls"
+             mc:Ignorable="d" x:Name="MyLabel"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border x:Name="Body" BorderThickness="{Binding OuterBorderThickness}" BorderBrush="{Binding OuterBorderColourBrush}" CornerRadius="{Binding CornerRadius}" Background="{Binding BackgroundColourBrush}">
+
+        <Grid x:Name="MainGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding ElementName=labelText, Path=Width}" MinWidth="50"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="labelText" VerticalAlignment="Center" Content="{Binding LabelText}" BorderBrush="{Binding OuterBorderColourBrush}" BorderThickness="0,0,0,0"/>
+            <Line Grid.Column="1" Y2="0" Y1="{Binding ActualHeight, ElementName=MainGrid}" X1="0" HorizontalAlignment="Right" Stroke="Black" StrokeThickness="1"/>
+            <Label Grid.Column="2" VerticalAlignment="Center" HorizontalContentAlignment="Left" Content="{Binding Value}"/>
+        </Grid>
+    </Border>
+
+
+</UserControl>

@@ -1,0 +1,38 @@
+﻿<Window x:Class="CurrentMonitor.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:view="clr-namespace:CurrentMonitor.WPF.Views"
+        xmlns:viewmodel="clr-namespace:CurrentMonitor.WPF.ViewModel"
+        xmlns:ap="clr-namespace:CurrentMonitor.WPF.AttachedProperties"
+        mc:Ignorable="d"
+        Title="BRE - Current Monitor" Height="550" Width="800" MinWidth="800" MinHeight="600"
+        WindowStyle="None"
+        AllowsTransparency="True">
+    <!--<Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodel:TestConsoleViewModel}">
+            <view:TestConsoleViewModel/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodel:SettingsViewModel}">
+            <view:SettingsViewModel/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Background="{StaticResource MainWindowBackground}">
+        --><!--Side Menu--><!--
+        <StackPanel x:Name="MenuPanel" HorizontalAlignment="Left" Background="{StaticResource MenuPanelBackground}" Panel.ZIndex="9999" Style="{StaticResource ToggleMenu}">
+            <StackPanel.RenderTransform>
+                <TranslateTransform X="-100" Y="0"/>
+            </StackPanel.RenderTransform>
+            <Viewbox Width="50" HorizontalAlignment="Right">
+                <ToggleButton Height="70" Width="70" Style="{StaticResource HamburgerCrossToggleButtonStyle}" Background="{StaticResource BREGreen}" x:Name="MenuButton" Margin="10" IsChecked="{Binding MenuPaneDisplayed}"/>
+            </Viewbox>
+            <Button Height="50" Content="SETTINGS" Command="{Binding NavigateToCommand}" CommandParameter="settings" Style="{StaticResource MenuButton}" ap:PictureAttachedProperty.MyProperty="{StaticResource CogIcon}"/>
+            <Button Height="50" Content="MONITOR" Command="{Binding NavigateToCommand}" CommandParameter="testwindow" Style="{StaticResource MenuButton}" ap:PictureAttachedProperty.MyProperty="{StaticResource Icon}"/>
+            <StackPanel.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="5" Direction="100"/>
+            </StackPanel.Effect>
+        </StackPanel>
+        <ContentPresenter Content="{Binding CurrentViewModel}" />-->
+    <!--</Grid>-->
+</Window>

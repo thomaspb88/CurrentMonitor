@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+        <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=StackPanel}}"/>
+    </Style>
+
+    <Style x:Key="CloseButtonWindowStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource WindowButtonStyle}">
+        <Setter Property="ToolTip" Value="Close"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsWindowMaximised}" Value="True">
+                            <Setter Property="Content" Value="{StaticResource RestoreWindowIcon}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsWindowMaximised}" Value="False">
+                            <Setter Property="Content" Value="{StaticResource MaximiseWindowIcon}"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<Style x:Key="MaximiseRestoreWindowButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource WindowButtonStyle}">
+        <Setter Property="Content" Value="{StaticResource MaximiseWindowIcon}"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsWindowMaximised}" Value="True">
+                <Setter Property="Content" Value="{StaticResource RestoreWindowIcon}"/>
+                <Setter Property="ToolTip" Value="Restore"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsWindowMaximised}" Value="False">
+                <Setter Property="Content" Value="{StaticResource MaximiseWindowIcon}"/>
+                <Setter Property="ToolTip" Value="Maximised"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>-->
+
+
+
+</ResourceDictionary>

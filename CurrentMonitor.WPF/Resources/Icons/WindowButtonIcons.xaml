@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CurrentMonitor.WPF.Icons">
+    <Canvas x:Key="CloseWindowIcon" Name="svg8" Width="10" Height="10">
+        <Canvas>
+            <Path StrokeThickness="0.6" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+                <Path.Data>
+                    <PathGeometry Figures="M 0 2.1845002e-8 9.9993896 10.000474" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Path StrokeThickness="0.6" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+                <Path.Data>
+                    <PathGeometry Figures="M 9.9993896 2.1845002e-8 0 10.000474" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+        </Canvas>
+    </Canvas>
+
+    <Canvas x:Key="MaximiseWindowIcon" Width="10" Height="10">
+        <Canvas>
+            <Rectangle Canvas.Left="0" Canvas.Top="2.1845002e-08" Width="9.9993896" Height="10.000474" RadiusY="1.756857e-06" RadiusX="1.756857e-06" Fill="Transparent" StrokeThickness="0.6" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+            <Rectangle Canvas.Left="0" Canvas.Top="2.1845002e-08" Width="9.9993896" Height="10.000474" RadiusY="1.756857e-06" RadiusX="1.756857e-06" Fill="Transparent" StrokeThickness="0.6" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+        </Canvas>
+    </Canvas>
+
+    <Canvas x:Key="MinimiseWindowIcon" Width="10" Height="10">
+        <Canvas>
+            <Path StrokeThickness="0.6" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+                <Path.Data>
+                    <PathGeometry Figures="M 0 10.000474 H 9.9993896" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+        </Canvas>
+    </Canvas>
+
+    <Canvas x:Key="RestoreWindowIcon" Width="10" Height="10">
+        <Canvas.RenderTransform>
+            <TranslateTransform X="10" Y="10"/>
+        </Canvas.RenderTransform>
+        <Canvas.Resources/>
+        <Canvas Name="layer1">
+            <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="2.1845002e-08" Canvas.Top="-9.9993896" Width="7.6014018" Height="7.6014018" RadiusY="1.9105933e-06" RadiusX="1.9105933e-06" Name="rect8588" Fill="#FFFFFFFF" StrokeThickness="0.652505" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="90" CenterY="1.9105933e-06"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="2.3979878" Canvas.Top="-7.6014018" Width="7.6014018" Height="7.6014018" RadiusY="1.910593e-06" RadiusX="1.910593e-06" Name="rect858" Fill="#FFFFFFFF" StrokeThickness="0.652505" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="90" CenterY="1.910593e-06"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Canvas>
+    </Canvas>
+
+</ResourceDictionary>

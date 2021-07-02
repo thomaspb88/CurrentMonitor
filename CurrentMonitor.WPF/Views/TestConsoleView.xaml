@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="CurrentMonitor.WPF.Views.TestConsoleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dd="clr-namespace:CurrentMonitor.WPF.DesignTime"
+             xmlns:uc="clr-namespace:CurrentMonitor.WPF.UserControls"
+             xmlns:view="clr-namespace:CurrentMonitor.WPF.Views"
+             xmlns:viewmodel="clr-namespace:CurrentMonitor.WPF.ViewModel"
+             xmlns:wpfuc="clr-namespace:WpfControlLibrary;assembly=WpfControlLibrary"
+             xmlns:conv="clr-namespace:CurrentMonitor.WPF.Converters"
+             xmlns:settings="clr-namespace:CurrentMonitor.WPF.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920" d:DataContext="{d:DesignInstance Type=dd:MockTestConsoleViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewmodel:MonitorViewModel}">
+            <view:MonitorView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type dd:MockMonitorViewModel}">
+            <view:MonitorView/>
+        </DataTemplate>
+        <conv:WidthConverter x:Key="WidthConverter"/>
+        <conv:IsTimeSpanNegativeConverter x:Key="IsTimeSpanNegativeConverter"/>
+        <conv:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="BorderBrush" Value="{StaticResource BREGreen}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid UseLayoutRounding="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="MainRow"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Timer & Events Panel-->
+        <Border Grid.Column="3" Grid.RowSpan="1"
+                Margin="10"
+                CornerRadius="5"
+                Padding="10"
+                Style="{StaticResource PanelStyle}">
+            <DockPanel>
+                <GroupBox DockPanel.Dock="Top" Header="Test Duration">
+                    <wpfuc:TimeControl IsLocked="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"  
+                                       Hours="{Binding Hours}" 
+                                       Minutes="{Binding Minutes}" 
+                                       Seconds="{Binding Seconds}" 
+                                       Value="{Binding Duration}" ToolTip="Hours : Minutes : Seconds"/>
+                </GroupBox>
+                <GroupBox Header="Time Elapsed" 
+                          DockPanel.Dock="Top">
+                    <TextBlock DockPanel.Dock="Top" 
+                               Style="{StaticResource TimeIndicatorTextBlockStyle}" 
+                               Text="{Binding Time, Mode=OneWay, StringFormat=hh\\:mm\\:ss, FallbackValue='00:00:00'}" ToolTip="HH:MM:SS, 1 Hour = 1200 seconds"/>
+                </GroupBox>
+                <GroupBox Header="Time Remaining" 
+                          DockPanel.Dock="Top">
+                    <TextBlock DockPanel.Dock="Top" 
+                               Style="{StaticResource TimeIndicatorTextBlockFlashingNegative}"
+                               Text="{Binding TimeRemaining, Mode=OneWay, StringFormat=hh\\:mm\\:ss, FallbackValue='00:00:00'}" ToolTip="HH:MM:SS, 1 Hour = 1200 seconds"/>
+                </GroupBox>
+                <GroupBox Header="Timer Offset (s)" DockPanel.Dock="Top">
+                    <wpfuc:TimeSecondsUpDownControl DockPanel.Dock="Top" Value="{Binding TimeOffset}"/>
+                </GroupBox>
+                <Button DockPanel.Dock="Top" Content="Start"
+                        Margin="0 10 0 0"
+                        Command="{Binding StartMonitoringCommand}"
+                        Padding="5" />
+                <Button DockPanel.Dock="Top" Content="Pause"
+                        Margin="0 10 0 0"
+                        Command="{Binding PauseMonitoringCommand}"
+                        Padding="5" />
+                <Button DockPanel.Dock="Top" Content="Stop"
+                        Margin="0 10 0 0"
+                        Command="{Binding StopMonitoringCommand}"
+                        Padding="5" />
+                <TextBlock DockPanel.Dock="Top" Margin="0 10 0 0" Text="Test Events"></TextBlock>
+                <ListBox BorderBrush="{StaticResource BREGreen}" x:Name="xListBox" DockPanel.Dock="Top" Margin="0 5 0 0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          Grid.ColumnSpan="5"
+                          ItemsSource="{Binding TestEventsList}"
+                          Background="{StaticResource EventListboxBackground}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap" Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType={x:Type ScrollContentPresenter}}, Converter={StaticResource WidthConverter}, ConverterParameter=8.0}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </Border>
+        <!--Monitor Charts-->
+        <!--<StackPanel Margin="20, 0, 0, 0" Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+            <UniformGrid Columns="3" Rows="2" Height="90" Visibility="{Binding Converter={StaticResource BoolToVisConverter}, Source={x:Static settings:Settings.Default}, Path=IsVoltageDisplayed}" Margin="0, 10">
+                <Label Margin="0, 0, 0, 5" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L1" />
+                <Label Margin="10, 0, 0, 5" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L2" />
+                <Label Margin="10, 0, 0, 5"  BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L3" />
+                <Label Margin="0, 5, 0, 0" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L1L2" />
+                <Label Margin="10, 5, 0, 0" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L2L3" />
+                <Label Margin="10, 5, 0, 0" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L1L3" />
+            </UniformGrid>
+
+            <Border Style="{StaticResource PanelStyle}" MaxHeight="503">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl HorizontalContentAlignment="Stretch" ItemsSource="{Binding Monitors}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1" IsItemsHost="True"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border >
+        </StackPanel>-->
+
+        <DockPanel LastChildFill="True" Grid.Column="1" Grid.Row="0" Margin="20,10,0,10">
+            <UniformGrid DockPanel.Dock="Top" Columns="3" Rows="2" Height="90" Visibility="{Binding Converter={StaticResource BoolToVisConverter}, Source={x:Static settings:Settings.Default}, Path=IsVoltageDisplayed}" Margin="0,0,0,10">
+                <Label Content="{Binding Voltages[0]}" Margin="0, 0, 0, 5" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L1" />
+                <Label Content="{Binding Voltages[1]}" Margin="10, 0, 0, 5" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L2" />
+                <Label Content="{Binding Voltages[2]}" Margin="10, 0, 0, 5"  BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L3" />
+                <Label Content="{Binding Voltages[3]}" Margin="0, 5, 0, 0" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L1L2" />
+                <Label Content="{Binding Voltages[4]}" Margin="10, 5, 0, 0" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L2L3" />
+                <Label Content="{Binding Voltages[5]}" Margin="10, 5, 0, 0" BorderThickness="1" BorderBrush="{StaticResource MainBorderColour}" Background="White" Style="{StaticResource DescriptiveLabel}" Tag="L1L3" />
+            </UniformGrid>
+            <Border Style="{StaticResource PanelStyle}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl HorizontalContentAlignment="Stretch" ItemsSource="{Binding Monitors}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <!--<UniformGrid Columns="1" IsItemsHost="True"/>-->
+                                <StackPanel Orientation="Vertical" IsItemsHost="True"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border >
+
+        </DockPanel>
+        <StatusBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <StatusBarItem>
+                <CheckBox IsChecked="{Binding IsDeviceConnected}" Style="{StaticResource BooleanDeviceIndicatorStyle}" Content="DAQ Connection" Margin="20,0,0,0"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</UserControl>

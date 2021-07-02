@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <Viewbox x:Key="BRELogo" Stretch="Uniform" >
+        <Canvas  Name="svg2622" Width="25.003401" Height="15.73306">
+            <Canvas.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </Canvas.RenderTransform>
+            <Canvas.Resources/>
+            <!--Unknown tag: sodipodi:namedview-->
+            <!--Unknown tag: metadata-->
+            <Canvas Name="layer1">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="-105.92687" Y="-191.87157"/>
+                </Canvas.RenderTransform>
+                <Canvas Name="g2657">
+                    <Canvas.RenderTransform>
+                        <TranslateTransform X="0.5000004" Y="-0.50000029"/>
+                    </Canvas.RenderTransform>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2344" Fill="{StaticResource BREGreen}" StrokeThickness="0.35277778">
+                        <Path.Data>
+                            <PathGeometry Figures="m 111.16597 197.42699 h -3.62726 V 193.593 c 0 -0.28328 -0.20144 -0.72143 -0.80575 -0.72143 -0.60466 0 -0.80609 0.43392 -0.80609 0.72143 l 0.002 13.10287 c 0 0.47943 0.37606 0.90876 0.80398 0.90876 l 4.42384 -3.5e-4 c 1.61184 0 2.62889 -1.48167 2.62889 -2.79683 v -4.57729 c 0 -1.31551 -1.00753 -2.80317 -2.61937 -2.80317 m 0.99201 7.36459 c 0 0.66216 -0.44132 1.19239 -1.25871 1.19239 h -3.35986 v -6.93561 h 3.35986 c 0.81739 0 1.25871 0.53022 1.25871 1.19344 z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2348" Fill="{StaticResource BREGreen}" StrokeThickness="0.35277778">
+                        <Path.Data>
+                            <PathGeometry Figures="m 129.12488 203.18403 c 0.60396 0 0.80539 -0.45932 0.80539 -0.71014 v -2.24367 c 0 -1.31551 -1.00683 -2.80317 -2.61902 -2.80317 h -2.62678 c -1.61149 0 -2.62008 1.48766 -2.62008 2.80317 v 4.57729 c 0 1.31516 1.01564 2.79577 2.62713 2.79577 h 4.5085 c 0.28328 0 0.72143 -0.20285 0.72143 -0.80716 0 -0.60466 -0.43462 -0.80539 -0.72143 -0.80539 h -4.19735 c -0.65722 0 -1.31868 -0.59373 -1.31868 -1.19627 v -1.61043 z m -5.44089 -2.94217 c 0 -0.66322 0.44132 -1.19344 1.25906 -1.19344 h 2.07645 c 0.81774 0 1.25836 0.53022 1.25836 1.19344 v 1.34091 h -4.59387 z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2352" Fill="{StaticResource BREGreen}" StrokeThickness="0.35277778">
+                        <Path.Data>
+                            <PathGeometry Figures="m 120.9609 197.42699 h -3.13725 c -1.61184 0 -2.6289 1.48202 -2.6289 2.79753 v 1.48449 0.0504 5.11916 c 0 0.28293 0.20249 0.72108 0.8068 0.72108 0.60501 0 0.80645 -0.43427 0.80645 -0.72108 l -0.001 -6.15209 c 0 -1.61184 0.85654 -1.68734 1.26259 -1.68734 l 2.89172 0.001 c 0.28222 0 0.72072 -0.20284 0.72072 -0.80715 0 -0.60431 -0.43497 -0.8061 -0.72072 -0.8061" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+    
+</ResourceDictionary>
